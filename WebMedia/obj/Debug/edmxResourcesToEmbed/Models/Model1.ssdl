@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebstudioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Album">
+    <Key>
+      <PropertyRef Name="ID_Album" />
+    </Key>
+    <Property Name="ID_Album" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenAlbum" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="SoLuongAnh" Type="int" />
+    <Property Name="ID_ChuDe" Type="int" Nullable="false" />
+    <Property Name="ID_NguoiChup" Type="int" Nullable="false" />
+    <Property Name="NoiDung" Type="ntext" />
+    <Property Name="AnhBia" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Anh">
+    <Key>
+      <PropertyRef Name="ID_Anh" />
+    </Key>
+    <Property Name="ID_Anh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenAnh" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ID_Album" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChatBox">
+    <Key>
+      <PropertyRef Name="ID_ChatBox" />
+    </Key>
+    <Property Name="ID_ChatBox" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenChatBox" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChiTietGoi">
+    <Key>
+      <PropertyRef Name="ID_ChiTetGoi" />
+    </Key>
+    <Property Name="ID_ChiTetGoi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Goi" Type="int" Nullable="false" />
+    <Property Name="ID_DichVu" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChuDe">
+    <Key>
+      <PropertyRef Name="ID_ChuDe" />
+    </Key>
+    <Property Name="ID_ChuDe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenChuDe" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="NoiDung" Type="ntext" />
+    <Property Name="AnhMH" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="DichVu">
+    <Key>
+      <PropertyRef Name="ID_DichVu" />
+    </Key>
+    <Property Name="ID_DichVu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDichVu" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="GoiDichVu">
+    <Key>
+      <PropertyRef Name="ID_Goi" />
+    </Key>
+    <Property Name="ID_Goi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenGoi" Type="nvarchar" MaxLength="100" />
+    <Property Name="Gia" Type="float" />
+    <Property Name="SoLuongAnh" Type="int" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="ID_HoaDon" />
+    </Key>
+    <Property Name="ID_HoaDon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_LichChup" Type="int" Nullable="false" />
+    <Property Name="Gia" Type="float" Nullable="false" />
+    <Property Name="TrangThaiThanhToan" Type="bit" />
+  </EntityType>
+  <EntityType Name="LichChup">
+    <Key>
+      <PropertyRef Name="ID_LichChup" />
+    </Key>
+    <Property Name="ID_LichChup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_KhachHang" Type="int" Nullable="false" />
+    <Property Name="ID_NguoiChup" Type="int" Nullable="false" />
+    <Property Name="NgayDat" Type="datetime" />
+    <Property Name="NgayChup" Type="datetime" />
+    <Property Name="ID_ChuDe" Type="int" Nullable="false" />
+    <Property Name="ID_ChatBox" Type="int" Nullable="false" />
+    <Property Name="TrangThaiChup" Type="bit" />
+    <Property Name="ID_Goi" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NguoiDung">
+    <Key>
+      <PropertyRef Name="ID_NguoiDung" />
+    </Key>
+    <Property Name="ID_NguoiDung" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="STD" Type="varchar" MaxLength="10" />
+    <Property Name="DiaChi" Type="varchar" MaxLength="250" />
+    <Property Name="AnhDaiDien" Type="varchar" MaxLength="50" />
+    <Property Name="TaiKhoan" Type="varchar" MaxLength="50" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="250" />
+    <Property Name="ID_Quyen" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NoiDungChat">
+    <Key>
+      <PropertyRef Name="ID_NoiDungChat" />
+    </Key>
+    <Property Name="ID_NoiDungChat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_NguoiDung" Type="int" Nullable="false" />
+    <Property Name="NoiDung" Type="ntext" Nullable="false" />
+    <Property Name="ThoiGian" Type="datetime" />
+    <Property Name="ID_ChatBox" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Quyen">
+    <Key>
+      <PropertyRef Name="ID_Quyen" />
+    </Key>
+    <Property Name="ID_Quyen" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TenQuyen" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__Album__ID_ChuDe__3E52440B">
+    <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="1" />
+    <End Role="Album" Type="Self.Album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuDe">
+        <PropertyRef Name="ID_ChuDe" />
+      </Principal>
+      <Dependent Role="Album">
+        <PropertyRef Name="ID_ChuDe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Album__ID_NguoiC__3F466844">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
+    <End Role="Album" Type="Self.Album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="ID_NguoiDung" />
+      </Principal>
+      <Dependent Role="Album">
+        <PropertyRef Name="ID_NguoiChup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Anh__ID_Album__4222D4EF">
+    <End Role="Album" Type="Self.Album" Multiplicity="1" />
+    <End Role="Anh" Type="Self.Anh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="ID_Album" />
+      </Principal>
+      <Dependent Role="Anh">
+        <PropertyRef Name="ID_Album" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietGo__ID_Di__74AE54BC">
+    <End Role="DichVu" Type="Self.DichVu" Multiplicity="1" />
+    <End Role="ChiTietGoi" Type="Self.ChiTietGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DichVu">
+        <PropertyRef Name="ID_DichVu" />
+      </Principal>
+      <Dependent Role="ChiTietGoi">
+        <PropertyRef Name="ID_DichVu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietGo__ID_Go__73BA3083">
+    <End Role="GoiDichVu" Type="Self.GoiDichVu" Multiplicity="1" />
+    <End Role="ChiTietGoi" Type="Self.ChiTietGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoiDichVu">
+        <PropertyRef Name="ID_Goi" />
+      </Principal>
+      <Dependent Role="ChiTietGoi">
+        <PropertyRef Name="ID_Goi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__ID_LichC__5165187F">
+    <End Role="LichChup" Type="Self.LichChup" Multiplicity="1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LichChup">
+        <PropertyRef Name="ID_LichChup" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="ID_LichChup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichChup__ID_Cha__4D94879B">
+    <End Role="ChatBox" Type="Self.ChatBox" Multiplicity="1" />
+    <End Role="LichChup" Type="Self.LichChup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChatBox">
+        <PropertyRef Name="ID_ChatBox" />
+      </Principal>
+      <Dependent Role="LichChup">
+        <PropertyRef Name="ID_ChatBox" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichChup__ID_Chu__4CA06362">
+    <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="1" />
+    <End Role="LichChup" Type="Self.LichChup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuDe">
+        <PropertyRef Name="ID_ChuDe" />
+      </Principal>
+      <Dependent Role="LichChup">
+        <PropertyRef Name="ID_ChuDe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichChup__ID_Goi__76969D2E">
+    <End Role="GoiDichVu" Type="Self.GoiDichVu" Multiplicity="1" />
+    <End Role="LichChup" Type="Self.LichChup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoiDichVu">
+        <PropertyRef Name="ID_Goi" />
+      </Principal>
+      <Dependent Role="LichChup">
+        <PropertyRef Name="ID_Goi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichChup__ID_Kha__4AB81AF0">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
+    <End Role="LichChup" Type="Self.LichChup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="ID_NguoiDung" />
+      </Principal>
+      <Dependent Role="LichChup">
+        <PropertyRef Name="ID_KhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichChup__ID_Ngu__4BAC3F29">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
+    <End Role="LichChup" Type="Self.LichChup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="ID_NguoiDung" />
+      </Principal>
+      <Dependent Role="LichChup">
+        <PropertyRef Name="ID_NguoiChup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NguoiDung__ID_Qu__398D8EEE">
+    <End Role="Quyen" Type="Self.Quyen" Multiplicity="1" />
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quyen">
+        <PropertyRef Name="ID_Quyen" />
+      </Principal>
+      <Dependent Role="NguoiDung">
+        <PropertyRef Name="ID_Quyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NoiDungCh__ID_Ch__47DBAE45">
+    <End Role="ChatBox" Type="Self.ChatBox" Multiplicity="1" />
+    <End Role="NoiDungChat" Type="Self.NoiDungChat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChatBox">
+        <PropertyRef Name="ID_ChatBox" />
+      </Principal>
+      <Dependent Role="NoiDungChat">
+        <PropertyRef Name="ID_ChatBox" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NoiDungCh__ID_Ng__46E78A0C">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
+    <End Role="NoiDungChat" Type="Self.NoiDungChat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="ID_NguoiDung" />
+      </Principal>
+      <Dependent Role="NoiDungChat">
+        <PropertyRef Name="ID_NguoiDung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebstudioModelStoreContainer">
+    <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Anh" EntityType="Self.Anh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChatBox" EntityType="Self.ChatBox" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiTietGoi" EntityType="Self.ChiTietGoi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChuDe" EntityType="Self.ChuDe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DichVu" EntityType="Self.DichVu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GoiDichVu" EntityType="Self.GoiDichVu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LichChup" EntityType="Self.LichChup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NoiDungChat" EntityType="Self.NoiDungChat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quyen" EntityType="Self.Quyen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Album__ID_ChuDe__3E52440B" Association="Self.FK__Album__ID_ChuDe__3E52440B">
+      <End Role="ChuDe" EntitySet="ChuDe" />
+      <End Role="Album" EntitySet="Album" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Album__ID_NguoiC__3F466844" Association="Self.FK__Album__ID_NguoiC__3F466844">
+      <End Role="NguoiDung" EntitySet="NguoiDung" />
+      <End Role="Album" EntitySet="Album" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Anh__ID_Album__4222D4EF" Association="Self.FK__Anh__ID_Album__4222D4EF">
+      <End Role="Album" EntitySet="Album" />
+      <End Role="Anh" EntitySet="Anh" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietGo__ID_Di__74AE54BC" Association="Self.FK__ChiTietGo__ID_Di__74AE54BC">
+      <End Role="DichVu" EntitySet="DichVu" />
+      <End Role="ChiTietGoi" EntitySet="ChiTietGoi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietGo__ID_Go__73BA3083" Association="Self.FK__ChiTietGo__ID_Go__73BA3083">
+      <End Role="GoiDichVu" EntitySet="GoiDichVu" />
+      <End Role="ChiTietGoi" EntitySet="ChiTietGoi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__ID_LichC__5165187F" Association="Self.FK__HoaDon__ID_LichC__5165187F">
+      <End Role="LichChup" EntitySet="LichChup" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichChup__ID_Cha__4D94879B" Association="Self.FK__LichChup__ID_Cha__4D94879B">
+      <End Role="ChatBox" EntitySet="ChatBox" />
+      <End Role="LichChup" EntitySet="LichChup" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichChup__ID_Chu__4CA06362" Association="Self.FK__LichChup__ID_Chu__4CA06362">
+      <End Role="ChuDe" EntitySet="ChuDe" />
+      <End Role="LichChup" EntitySet="LichChup" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichChup__ID_Goi__76969D2E" Association="Self.FK__LichChup__ID_Goi__76969D2E">
+      <End Role="GoiDichVu" EntitySet="GoiDichVu" />
+      <End Role="LichChup" EntitySet="LichChup" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichChup__ID_Kha__4AB81AF0" Association="Self.FK__LichChup__ID_Kha__4AB81AF0">
+      <End Role="NguoiDung" EntitySet="NguoiDung" />
+      <End Role="LichChup" EntitySet="LichChup" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichChup__ID_Ngu__4BAC3F29" Association="Self.FK__LichChup__ID_Ngu__4BAC3F29">
+      <End Role="NguoiDung" EntitySet="NguoiDung" />
+      <End Role="LichChup" EntitySet="LichChup" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NguoiDung__ID_Qu__398D8EEE" Association="Self.FK__NguoiDung__ID_Qu__398D8EEE">
+      <End Role="Quyen" EntitySet="Quyen" />
+      <End Role="NguoiDung" EntitySet="NguoiDung" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NoiDungCh__ID_Ch__47DBAE45" Association="Self.FK__NoiDungCh__ID_Ch__47DBAE45">
+      <End Role="ChatBox" EntitySet="ChatBox" />
+      <End Role="NoiDungChat" EntitySet="NoiDungChat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NoiDungCh__ID_Ng__46E78A0C" Association="Self.FK__NoiDungCh__ID_Ng__46E78A0C">
+      <End Role="NguoiDung" EntitySet="NguoiDung" />
+      <End Role="NoiDungChat" EntitySet="NoiDungChat" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

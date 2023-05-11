@@ -1,0 +1,83 @@
+﻿@using WebMedia.Models
+@model NguoiDung
+@{
+    ViewBag.Title = "DangKy";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="~/Content/dangky.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+                <div class="col-lg-12 logo">
+                    <img src="~/Images/LUON 21.2 WHITE-04.png" alt="">
+                </div>
+
+                <div class="col-lg-12 login-form">
+                    @using (Html.BeginForm("DangKy", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="col-lg-12 login-form">
+                            <form>
+                                <div class="form-group">
+                                    <label class="form-control-label">Họ tên</label>
+                                    @Html.TextBoxFor(m => m.HoTen, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.HoTen, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Số điện thoại</label>
+                                    @Html.TextBoxFor(m => m.STD, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.STD, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Địa chỉ</label>
+                                    @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.DiaChi, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Ảnh đại diện</label>
+                                    <input type="file" class="avt" name="Avatar" accept="image/*" required />
+                                    @Html.ValidationMessageFor(m => m.AnhDaiDien, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Tên tài khoản</label>
+                                    @Html.TextBoxFor(m => m.TaiKhoan, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.TaiKhoan, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Mật khẩu</label>
+                                    @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-lg-12 loginbttm">
+                                    <div class="col-lg-6 login-btm login-text">
+                                        <!-- Error Message -->
+                                    </div>
+                                    <div class="col-lg-6 login-btm login-button">
+                                        <button type="submit" class="btn btn-outline-primary">Đăng ký</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    }
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

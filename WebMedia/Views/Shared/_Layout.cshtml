@@ -1,0 +1,167 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>LƯỢN MEDIA</title>
+    <meta name="description" content="Blue One Page Creative HTML5 Template">
+    <meta name="keywords" content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
+    <meta name="author" content="Muhammad Morshed">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- bootstrap.min -->
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/jquery.fancybox.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/slit-slider.css">
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <link rel="stylesheet" href="~/Content/main.css">
+    <script src="~/Scripts/modernizr-2.6.2.min.js"></script>
+
+
+</head>
+
+<body id="body">
+
+    <div id="preloader">
+        <div class="loder-box">
+            <div class="battery"></div>
+        </div>
+    </div>
+
+    <header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- responsive nav button -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <!-- <span class="sr-only">Toggle navigation</span> -->
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- /responsive nav button -->
+                <!-- logo -->
+                <div class="lg">
+                    <a href="#body" class="logo"><img src="~/Images/LUON 21.2 WHITE-04.png" alt="" style="width: 100px;"></a>
+                </div>
+                <!-- /logo -->
+            </div>
+
+            <!-- main nav -->
+            <nav class="collapse navbar-collapse navbar-right" role="navigation">
+                <ul id="nav" class="nav navbar-nav ">
+                    <li><a href="#body">Trang chủ</a></li>
+                    <li><a href="#service">chủ đề</a></li>
+                    <li><a href="#portfolio">dự án</a></li>
+                    <li><a href="#testimonials">Bình luận</a></li>
+                    <li><a href="#price">gói dịch vụ</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                    @*<li>@Html.ActionLink("Đăng nhập", "Login")</li>*@
+                </ul>
+                @if (ViewBag.isLogin)
+                {
+                    <div class="login navbar-right">
+                        @*@Html.ActionLink("Đăng xuất", "Logout", "Home", null, new { @class = "textlogin" })*@
+                        <!-- Button trigger modal -->
+                        <button type="button" style="border: none; background: none; color: white; font-size: 15px; text-transform: uppercase;" data-toggle="modal" data-target="#confirmDeleteModal">
+                            Đăng xuất
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Đăng xuất</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Bạn có chắc chắn muốn đăng xuất không?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+                                       @Html.ActionLink("Đăng xuất", "Logout", "Home", null, new { @class = "btn btn-danger"})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="login navbar-right">
+                        @Html.ActionLink("Đăng nhập", "Login", null, new { @class = "textlogin" })
+                    </div>
+                }
+            </nav>
+            <!-- /main nav -->
+
+        </div>
+    </header>
+
+    <main class="site-content" role="main">
+        @RenderBody()
+    </main>
+    <footer id="footer">
+        <div class="container">
+            <div class="row text-center">
+                <div class="footer-content">
+                    <div class="wow animated fadeInDown">
+                        <p>Chúng tôi đợi bạn</p>
+                    </div>
+                    <!-- <form action="#" method="post" class="subscribe-form wow animated fadeInUp">
+                        <div class="input-field">
+                            <input type="email" class="subscribe form-control" placeholder="Enter Your Email...">
+                            <button type="submit" class="submit-icon">
+                                <i class="fa fa-paper-plane fa-lg"></i>
+                            </button>
+                        </div>
+                    </form> -->
+                    <div class="footer-social">
+                        <ul>
+                            <li class="wow animated zoomIn"><a href="#"><i class="fa fa-thumbs-up fa-3x"></i></a></li>
+                            <li class="wow animated zoomIn" data-wow-delay="0.3s"><a href="#"><i class="fa fa-facebook fa-3x"></i></a></li>
+                            <li class="wow animated zoomIn" data-wow-delay="0.6s"><a href="#"><i class="fa fa-twitter fa-3x"></i></a></li>
+                            <li class="wow animated zoomIn" data-wow-delay="0.9s"><a href="#"><i class="fa fa-instagram fa-3x"></i></a></li>
+                            <li class="wow animated zoomIn" data-wow-delay="1.2s"><a href="#"><i class="fa fa-youtube fa-3x"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <p>Copyright &copy; 2023-2024 Design and Developed By<a href="http://www.themefisher.com">Themefisher</a> </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+<!-- Essential jQuery Plugins
+    ================================================== -->
+<!-- Main jQuery -->
+<script src="~/Scripts/jquery-1.11.1.min.js"></script>
+<!-- Twitter Bootstrap -->
+<script src="~/Scripts/bootstrap.min.js"></script>
+<!-- Single Page Nav -->
+<script src="~/Scripts/jquery.singlePageNav.min.js"></script>
+<!-- jquery.fancybox.pack -->
+<script src="~/Scripts/jquery.fancybox.pack.js"></script>
+<!-- Google Map API -->
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<!-- Owl Carousel -->
+<script src="~/Scripts/owl.carousel.min.js"></script>
+<!-- jquery easing -->
+<script src="~/Scripts/jquery.easing.min.js"></script>
+<!-- Fullscreen slider -->
+<script src="~/Scripts/jquery.slitslider.js"></script>
+<script src="~/Scripts/jquery.ba-cond.min.js"></script>
+<!-- onscroll animation -->
+<script src="~/Scripts/wow.min.js"></script>
+<!-- Custom Functions -->
+<script src="~/Scripts/main.js"></script>
+@RenderSection("JavaScript", required: false)
