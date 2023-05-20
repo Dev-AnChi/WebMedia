@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>LƯỢN MEDIA</title>
+    <link rel="icon" href="/img/LUON 21.2 WHITE-04.png" type="image/x-icon">
     <meta name="description" content="Blue One Page Creative HTML5 Template">
     <meta name="keywords" content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
     <meta name="author" content="Muhammad Morshed">
@@ -21,7 +22,7 @@
     <link rel="stylesheet" href="~/Content/animate.css">
     <link rel="stylesheet" href="~/Content/main.css">
     <script src="~/Scripts/modernizr-2.6.2.min.js"></script>
-
+    <script src="https://kit.fontawesome.com/a585b45142.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -35,73 +36,134 @@
 
     <header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
         <div class="container">
-            <div class="navbar-header">
-                <!-- responsive nav button -->
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <!-- <span class="sr-only">Toggle navigation</span> -->
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- /responsive nav button -->
-                <!-- logo -->
-                <div class="lg">
-                    <a href="#body" class="logo"><img src="~/Images/LUON 21.2 WHITE-04.png" alt="" style="width: 100px;"></a>
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <!-- <span class="sr-only">Toggle navigation</span> -->
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+            @if (ViewBag.isLogin)
+            {
+                <div class="col-lg-1 menu-bars">
+                    <a href="#" class="menu-bars hv" id="show-menu">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                    <nav id="nav-menu">
+                        <ul class="nav-menu-items">
+                            <div id="navbartoggle">
+                                <a href="" class="menu-bars ic hv" id="hide-menu">
+                                    <i class="fas fa-bars nav-icon"></i>
+                                </a>
+                                <a href="">
+                                    <img src="~/Images/LUON 21.2 WHITE-04.png" alt="" style="width: 100%;">
+                                </a>
+                            </div>
+                            <hr />
+                            <div class="nav-section">
+                            <li class="nav-text">
+                                <a href="@Url.Action("HoSo", "Home")">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person nav-icon icon" viewBox="0 0 16 16">
+                                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                                    </svg>
+                                    Hồ sơ
+                                </a>
+                            </li>
+                            <li class="nav-text">
+                                <a href="@Url.Action("MyAlbum", "Home")">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-album nav-icon icon" viewBox="0 0 16 16">
+                                        <path d="M5.5 4a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5v-5a.5.5 0 0 0-.5-.5h-5zm1 7a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3z" />
+                                        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                                        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                                    </svg>
+                                    Album
+                                </a>
+                            </li>
+                            <li class="nav-text">
+                                <a href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event nav-icon icon" viewBox="0 0 16 16">
+                                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
+                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                    </svg>
+                                    Lịch chụp
+                                </a>
+                            </li>
                 </div>
-                <!-- /logo -->
-            </div>
-
-            <!-- main nav -->
-            <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                <ul id="nav" class="nav navbar-nav ">
-                    <li><a href="#body">Trang chủ</a></li>
-                    <li><a href="#service">chủ đề</a></li>
-                    <li><a href="#portfolio">dự án</a></li>
-                    <li><a href="#testimonials">Bình luận</a></li>
-                    <li><a href="#price">gói dịch vụ</a></li>
-                    <li><a href="#contact">Liên hệ</a></li>
-                    @*<li>@Html.ActionLink("Đăng nhập", "Login")</li>*@
                 </ul>
-                @if (ViewBag.isLogin)
-                {
-                    <div class="login navbar-right">
-                        @*@Html.ActionLink("Đăng xuất", "Logout", "Home", null, new { @class = "textlogin" })*@
-                        <!-- Button trigger modal -->
-                        <button type="button" style="border: none; background: none; color: white; font-size: 15px; text-transform: uppercase;" data-toggle="modal" data-target="#confirmDeleteModal">
-                            Đăng xuất
-                        </button>
+                </nav>
+            </div>
+            }
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Đăng xuất</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Bạn có chắc chắn muốn đăng xuất không?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
-                                       @Html.ActionLink("Đăng xuất", "Logout", "Home", null, new { @class = "btn btn-danger"})
-                                    </div>
+         <!-- /responsive nav button -->
+        <div class="navbar-header">
+            <!-- responsive nav button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <!-- <span class="sr-only">Toggle navigation</span> -->
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- /responsive nav button -->
+            <!-- logo -->
+            <div class="lg">
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="~/Images/LUON 21.2 WHITE-04.png" alt="" style="width: 100px;">
+                </a>
+            </div>
+            <!-- /logo -->
+        </div>
+
+        <!-- main nav -->
+        <nav class="collapse navbar-collapse navbar-right" role="navigation">
+            <ul id="nav" class="nav navbar-nav ">
+                <li><a href="#body">Trang chủ</a></li>
+                <li><a href="#service">chủ đề</a></li>
+                <li><a href="#portfolio">dự án</a></li>
+                <li><a href="#testimonials">Bình luận</a></li>
+                <li><a href="#price">gói dịch vụ</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+                @*<li>@Html.ActionLink("Đăng nhập", "Login")</li>*@
+            </ul>
+            @if (ViewBag.isLogin)
+            {
+                <div class="login navbar-right">
+                    @*@Html.ActionLink("Đăng xuất", "Logout", "Home", null, new { @class = "textlogin" })*@
+                    <!-- Button trigger modal -->
+                    <button type="button" style="border: none; background: none; color: white; font-size: 15px; text-transform: uppercase;" data-toggle="modal" data-target="#confirmDeleteModal">
+                        Đăng xuất
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="confirmDeleteModalLabel" style="color: black">Đăng xuất</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="color: black">
+                                    Bạn có chắc chắn muốn đăng xuất không?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color: black">Huỷ</button>
+                                    @Html.ActionLink("Đăng xuất", "Logout", "Home", null, new { @class = "btn btn-danger" })
                                 </div>
                             </div>
                         </div>
                     </div>
-                }
-                else
-                {
-                    <div class="login navbar-right">
-                        @Html.ActionLink("Đăng nhập", "Login", null, new { @class = "textlogin" })
-                    </div>
-                }
-            </nav>
-            <!-- /main nav -->
-
+                </div>
+            }
+            else
+            {
+                <div class="login navbar-right">
+                    @Html.ActionLink("Đăng nhập", "Login", null, new { @class = "textlogin" })
+                </div>
+            }
+        </nav>
+        <!-- /main nav -->
         </div>
     </header>
 
@@ -164,4 +226,7 @@
 <script src="~/Scripts/wow.min.js"></script>
 <!-- Custom Functions -->
 <script src="~/Scripts/main.js"></script>
+<script src="~/Scripts/app.js"></script>
+
 @RenderSection("JavaScript", required: false)
+

@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,7 +15,7 @@ namespace WebMedia.Controllers
 {
     public class HomeController : Controller
     {
-        private WebstudioEntities db = new WebstudioEntities();
+        private WebstudioEntities1 db = new WebstudioEntities1();
 
         MultiDataModels multidata = new MultiDataModels();
 
@@ -57,16 +61,16 @@ namespace WebMedia.Controllers
         }
         public List<ChiTietGoi> GetChiTietGoi()
         {
-            return db.ChiTietGois.Include(x=>x.DichVu).ToList();
+            return db.ChiTietGois.Include(x => x.DichVu).ToList();
         }
-        
+
         public ActionResult Login()
         {
-                return View();
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Login(string TaiKhoan, string MatKhau) 
+        public ActionResult Login(string TaiKhoan, string MatKhau)
         {
             var user = db.NguoiDungs.Where(x => x.TaiKhoan == TaiKhoan).Where(x => x.MatKhau == MatKhau).ToList();
             if (user.Count >= 1)
@@ -99,14 +103,14 @@ namespace WebMedia.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult DangKy() 
-        { 
-            return View(); 
+        public ActionResult DangKy()
+        {
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DangKy([Bind(Include = "HoTen, STD, DiaChi, AnhDaiDien, TaiKhoan, MatKhau, ID_Quyen")] NguoiDung nd) 
+        public ActionResult DangKy([Bind(Include = "HoTen, STD, DiaChi, AnhDaiDien, TaiKhoan, MatKhau, ID_Quyen")] NguoiDung nd)
         {
             //System.Web.HttpPostedFileBase Avatar;
             var anhdaidien = Request.Files["Avatar"];
@@ -121,6 +125,136 @@ namespace WebMedia.Controllers
             db.NguoiDungs.Add(nd);
             db.SaveChanges();
             return RedirectToAction("Login");
+        }
+
+        public ActionResult DatLich(int ID_Goi)
+        {
+            string myValue = "";
+            HttpCookie myCookie = Request.Cookies["Account"];
+            if (myCookie != null)
+            {
+                myValue = myCookie.Value;
+                // Xử lý giá trị của cookie
+            }
+
+            LichChup lc = new LichChup();
+
+            lc.ID_NguoiChup = 1;
+            var nguoichup = db.NguoiDungs.SingleOrDefault(x => x.ID_NguoiDung == lc.ID_NguoiChup);
+            var nguoiDung = db.NguoiDungs.SingleOrDefault(x => x.TaiKhoan == myValue);
+            var goi = db.GoiDichVus.SingleOrDefault(x => x.ID_Goi == ID_Goi);
+            if (nguoiDung != null)
+            {
+                lc.ID_KhachHang = nguoiDung.ID_NguoiDung;
+                ViewBag.HoTen = nguoiDung.HoTen;
+                ViewBag.TenGoi = goi.TenGoi;
+            }
+            lc.ID_Goi = ID_Goi;
+            ViewBag.nguoichup = nguoichup.HoTen;
+            ViewBag.ID_ChuDe = new SelectList(db.ChuDes, "ID_ChuDe", "TenChuDe");
+
+            return View(lc);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("DatLichPost")]
+        public ActionResult DatLich([Bind(Include = "ID_KhachHang, ID_NguoiChup, NgayDat, NgayChup, ID_ChuDe, Dia_Diem, TrangThaiChup, ID_Goi")] LichChup lc)
+        {
+            DateTime now = DateTime.Now;
+            lc.NgayDat = now;
+            lc.TrangThaiChup = false;
+            db.LichChups.Add(lc);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult HoSo()
+        {
+            string myValue = "";
+            HttpCookie myCookie = Request.Cookies["Account"];
+            if (myCookie != null)
+            {
+                myValue = myCookie.Value;
+                // Xử lý giá trị của cookie
+            }
+
+            var nguoiDung = db.NguoiDungs.SingleOrDefault(x => x.TaiKhoan == myValue);
+            var quyen = db.Quyens.SingleOrDefault(x => x.ID_Quyen == nguoiDung.ID_Quyen);
+            ViewBag.TenQuyen = quyen.TenQuyen;
+            return View(nguoiDung);
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult HoSo([Bind(Include = "ID_NguoiDung, HoTen, STD, DiaChi, AnhDaiDien, TaiKhoan, MatKhau, ID_Quyen")] NguoiDung nd, string MatKhauInput)
+        {
+            var postedFile = Request.Files["Avatar"];
+            if (postedFile != null && postedFile.ContentLength > 0)
+            {
+                // Lấy tên file ảnh mới
+                var newFileName = Path.GetFileName(postedFile.FileName);
+
+                // Lưu ảnh vào thư mục
+                var path = Server.MapPath("/Images/Photographer/" + newFileName);
+                postedFile.SaveAs(path);
+
+                // Cập nhật tên file ảnh mới vào model NguoiDung
+                nd.AnhDaiDien = newFileName;
+            }
+            else if (string.IsNullOrEmpty(postedFile.FileName))
+            {
+                // Nếu người dùng không chọn ảnh mới, giữ nguyên tên file ảnh cũ
+                nd.AnhDaiDien = db.NguoiDungs.Where(x => x.ID_NguoiDung == nd.ID_NguoiDung).Select(x => x.AnhDaiDien).SingleOrDefault();
+            }
+
+            if (!string.IsNullOrEmpty(MatKhauInput))
+            {
+                nd.MatKhau = MatKhauInput;
+            }
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(nd).State = EntityState.Modified;
+                db.SaveChanges();
+                TempData["EditSuccess"] = "Success !!";
+                return RedirectToAction("HoSo");
+            }
+            TempData["EditSuccess"] = null;
+
+            return View("HoSo", nd);
+        }
+
+        public ActionResult MyAlbum()
+        {
+            multidata.isLogin = Request.Cookies.Get("Account") == null ? false : true;
+            ViewBag.islogin = multidata.isLogin;
+
+            string myValue = "";
+            HttpCookie myCookie = Request.Cookies["Account"];
+            if (myCookie != null)
+            {
+                myValue = myCookie.Value;
+                // Xử lý giá trị của cookie
+            }
+
+            var nguoidung = db.NguoiDungs.SingleOrDefault(x => x.TaiKhoan.ToString() == myValue);
+            var myAlbum = GetAlbum(nguoidung.ID_NguoiDung);
+            var listAnh = GetAllAnh();
+
+            multidata.myAlbum = myAlbum;
+            multidata.anhs = listAnh;
+            
+            return View(multidata);
+        }
+
+        public List<Album> GetAlbum(int id)
+        {
+            return db.Albums.Where(x => x.ID_NguoiChup == id).ToList();
+        }
+        public List<Anh> GetAllAnh()
+        {
+            return db.Anhs.ToList();
         }
     }
 }

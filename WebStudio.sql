@@ -42,30 +42,27 @@ create table Anh(
 	ID_Album int NOT NULL FOREIGN KEY REFERENCES Album(ID_Album)
 )
 go
-create table ChatBox(
-	ID_ChatBox int IDENTITY(1,1) primary key not null,
-	TenChatBox nvarchar(250) not null
-)
-go
-create table NoiDungChat(
-	ID_NoiDungChat int IDENTITY(1,1) primary key not null,
-	ID_NguoiDung int NOT NULL FOREIGN KEY REFERENCES NguoiDung(ID_NguoiDung),
-	NoiDung ntext not null,
-	ThoiGian Datetime,
-	ID_ChatBox int NOT NULL FOREIGN KEY REFERENCES ChatBox(ID_ChatBox)
-)
-go
 create table LichChup(
 	ID_LichChup int IDENTITY(1,1) primary key not null,
 	ID_KhachHang int NOT NULL FOREIGN KEY REFERENCES NguoiDung(ID_NguoiDung),
 	ID_NguoiChup int NOT NULL FOREIGN KEY REFERENCES NguoiDung(ID_NguoiDung),
 	NgayDat datetime,
 	NgayChup datetime,
+	Dia_Diem nvarchar(250),
 	ID_Goi int NOT NULL FOREIGN KEY REFERENCES GoiDichVu(ID_Goi),
 	ID_ChuDe int NOT NULL FOREIGN KEY REFERENCES ChuDe(ID_ChuDe),
-	ID_ChatBox int NOT NULL FOREIGN KEY REFERENCES ChatBox(ID_ChatBox),
 	TrangThaiChup BIT DEFAULT(0)
 )
+/*
+SELECT
+    OBJECT_NAME(f.parent_object_id) AS LichChup,
+    f.name AS foreign_key_name,
+    OBJECT_NAME(f.referenced_object_id) AS referenced_table_name
+FROM
+    sys.foreign_keys AS f
+WHERE
+    f.parent_object_id = OBJECT_ID('LichChup');
+*/
 go
 create table HoaDon(
 	ID_HoaDon int IDENTITY(1,1) primary key not null,
@@ -127,6 +124,8 @@ values (N'Không được thêm'),
 go
 insert into ChiTietGoi(ID_Goi, ID_DichVu)
 values (1,1),(1,1),(1,1),(2,2),(2,3),(2,1),(3,2),(3,3),(3,4)
-
-
-select * from nguoidung
+go
+insert into Anh(TenAnh, ID_Album)
+values ('Nhom.JPG', 1), ('IMG_1922.JPG',1), ('doi.JPG', 2), ('Trai1.jpg', 2),('doi.JPG', 1),
+('Trai1.JPG', 1),('Nhom.JPG', 1),('IMG_1922.JPG', 1), ('Trai1.jpg', 2),('doi.JPG', 2),('IMG_1922.JPG', 2)
+go

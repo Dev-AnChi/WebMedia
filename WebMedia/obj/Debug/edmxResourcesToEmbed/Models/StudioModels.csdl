@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebstudioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Album">
+    <Key>
+      <PropertyRef Name="ID_Album" />
+    </Key>
+    <Property Name="ID_Album" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenAlbum" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoLuongAnh" Type="Int32" />
+    <Property Name="ID_ChuDe" Type="Int32" Nullable="false" />
+    <Property Name="ID_NguoiChup" Type="Int32" Nullable="false" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AnhBia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChuDe" Relationship="Self.FK__Album__ID_ChuDe__3E52440B" FromRole="Album" ToRole="ChuDe" />
+    <NavigationProperty Name="NguoiDung" Relationship="Self.FK__Album__ID_NguoiC__3F466844" FromRole="Album" ToRole="NguoiDung" />
+    <NavigationProperty Name="Anhs" Relationship="Self.FK__Anh__ID_Album__4222D4EF" FromRole="Album" ToRole="Anh" />
+  </EntityType>
+  <EntityType Name="Anh">
+    <Key>
+      <PropertyRef Name="ID_Anh" />
+    </Key>
+    <Property Name="ID_Anh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenAnh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_Album" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Album" Relationship="Self.FK__Anh__ID_Album__4222D4EF" FromRole="Anh" ToRole="Album" />
+  </EntityType>
+  <EntityType Name="ChiTietGoi">
+    <Key>
+      <PropertyRef Name="ID_ChiTetGoi" />
+    </Key>
+    <Property Name="ID_ChiTetGoi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Goi" Type="Int32" Nullable="false" />
+    <Property Name="ID_DichVu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DichVu" Relationship="Self.FK__ChiTietGo__ID_Di__74AE54BC" FromRole="ChiTietGoi" ToRole="DichVu" />
+    <NavigationProperty Name="GoiDichVu" Relationship="Self.FK__ChiTietGo__ID_Go__73BA3083" FromRole="ChiTietGoi" ToRole="GoiDichVu" />
+  </EntityType>
+  <EntityType Name="ChuDe">
+    <Key>
+      <PropertyRef Name="ID_ChuDe" />
+    </Key>
+    <Property Name="ID_ChuDe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenChuDe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AnhMH" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Albums" Relationship="Self.FK__Album__ID_ChuDe__3E52440B" FromRole="ChuDe" ToRole="Album" />
+    <NavigationProperty Name="LichChups" Relationship="Self.FK__LichChup__ID_Chu__4CA06362" FromRole="ChuDe" ToRole="LichChup" />
+  </EntityType>
+  <EntityType Name="DichVu">
+    <Key>
+      <PropertyRef Name="ID_DichVu" />
+    </Key>
+    <Property Name="ID_DichVu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDichVu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChiTietGois" Relationship="Self.FK__ChiTietGo__ID_Di__74AE54BC" FromRole="DichVu" ToRole="ChiTietGoi" />
+  </EntityType>
+  <EntityType Name="GoiDichVu">
+    <Key>
+      <PropertyRef Name="ID_Goi" />
+    </Key>
+    <Property Name="ID_Goi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenGoi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Gia" Type="Double" />
+    <Property Name="SoLuongAnh" Type="Int32" />
+    <NavigationProperty Name="ChiTietGois" Relationship="Self.FK__ChiTietGo__ID_Go__73BA3083" FromRole="GoiDichVu" ToRole="ChiTietGoi" />
+    <NavigationProperty Name="LichChups" Relationship="Self.FK__LichChup__ID_Goi__76969D2E" FromRole="GoiDichVu" ToRole="LichChup" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="ID_HoaDon" />
+    </Key>
+    <Property Name="ID_HoaDon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_LichChup" Type="Int32" Nullable="false" />
+    <Property Name="Gia" Type="Double" Nullable="false" />
+    <Property Name="TrangThaiThanhToan" Type="Boolean" />
+    <NavigationProperty Name="LichChup" Relationship="Self.FK__HoaDon__ID_LichC__5165187F" FromRole="HoaDon" ToRole="LichChup" />
+  </EntityType>
+  <EntityType Name="LichChup">
+    <Key>
+      <PropertyRef Name="ID_LichChup" />
+    </Key>
+    <Property Name="ID_LichChup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_KhachHang" Type="Int32" Nullable="false" />
+    <Property Name="ID_NguoiChup" Type="Int32" Nullable="false" />
+    <Property Name="NgayDat" Type="DateTime" Precision="3" />
+    <Property Name="NgayChup" Type="DateTime" Precision="3" />
+    <Property Name="ID_ChuDe" Type="Int32" Nullable="false" />
+    <Property Name="TrangThaiChup" Type="Boolean" />
+    <Property Name="ID_Goi" Type="Int32" Nullable="false" />
+    <Property Name="Dia_Diem" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChuDe" Relationship="Self.FK__LichChup__ID_Chu__4CA06362" FromRole="LichChup" ToRole="ChuDe" />
+    <NavigationProperty Name="GoiDichVu" Relationship="Self.FK__LichChup__ID_Goi__76969D2E" FromRole="LichChup" ToRole="GoiDichVu" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__ID_LichC__5165187F" FromRole="LichChup" ToRole="HoaDon" />
+    <NavigationProperty Name="NguoiDung" Relationship="Self.FK__LichChup__ID_Kha__4AB81AF0" FromRole="LichChup" ToRole="NguoiDung" />
+    <NavigationProperty Name="NguoiDung1" Relationship="Self.FK__LichChup__ID_Ngu__4BAC3F29" FromRole="LichChup" ToRole="NguoiDung" />
+  </EntityType>
+  <EntityType Name="NguoiDung">
+    <Key>
+      <PropertyRef Name="ID_NguoiDung" />
+    </Key>
+    <Property Name="ID_NguoiDung" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="STD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="AnhDaiDien" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Quyen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Albums" Relationship="Self.FK__Album__ID_NguoiC__3F466844" FromRole="NguoiDung" ToRole="Album" />
+    <NavigationProperty Name="LichChups" Relationship="Self.FK__LichChup__ID_Kha__4AB81AF0" FromRole="NguoiDung" ToRole="LichChup" />
+    <NavigationProperty Name="LichChups1" Relationship="Self.FK__LichChup__ID_Ngu__4BAC3F29" FromRole="NguoiDung" ToRole="LichChup" />
+    <NavigationProperty Name="Quyen" Relationship="Self.FK__NguoiDung__ID_Qu__398D8EEE" FromRole="NguoiDung" ToRole="Quyen" />
+  </EntityType>
+  <EntityType Name="Quyen">
+    <Key>
+      <PropertyRef Name="ID_Quyen" />
+    </Key>
+    <Property Name="ID_Quyen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenQuyen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="NguoiDungs" Relationship="Self.FK__NguoiDung__ID_Qu__398D8EEE" FromRole="Quyen" ToRole="NguoiDung" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__Album__ID_ChuDe__3E52440B">
+    <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="1" />
+    <End Role="Album" Type="Self.Album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuDe">
+        <PropertyRef Name="ID_ChuDe" />
+      </Principal>
+      <Dependent Role="Album">
+        <PropertyRef Name="ID_ChuDe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Album__ID_NguoiC__3F466844">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
+    <End Role="Album" Type="Self.Album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="ID_NguoiDung" />
+      </Principal>
+      <Dependent Role="Album">
+        <PropertyRef Name="ID_NguoiChup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Anh__ID_Album__4222D4EF">
+    <End Role="Album" Type="Self.Album" Multiplicity="1" />
+    <End Role="Anh" Type="Self.Anh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="ID_Album" />
+      </Principal>
+      <Dependent Role="Anh">
+        <PropertyRef Name="ID_Album" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietGo__ID_Di__74AE54BC">
+    <End Role="DichVu" Type="Self.DichVu" Multiplicity="1" />
+    <End Role="ChiTietGoi" Type="Self.ChiTietGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DichVu">
+        <PropertyRef Name="ID_DichVu" />
+      </Principal>
+      <Dependent Role="ChiTietGoi">
+        <PropertyRef Name="ID_DichVu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietGo__ID_Go__73BA3083">
+    <End Role="GoiDichVu" Type="Self.GoiDichVu" Multiplicity="1" />
+    <End Role="ChiTietGoi" Type="Self.ChiTietGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoiDichVu">
+        <PropertyRef Name="ID_Goi" />
+      </Principal>
+      <Dependent Role="ChiTietGoi">
+        <PropertyRef Name="ID_Goi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichChup__ID_Chu__4CA06362">
+    <End Role="ChuDe" Type="Self.ChuDe" Multiplicity="1" />
+    <End Role="LichChup" Type="Self.LichChup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuDe">
+        <PropertyRef Name="ID_ChuDe" />
+      </Principal>
+      <Dependent Role="LichChup">
+        <PropertyRef Name="ID_ChuDe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichChup__ID_Goi__76969D2E">
+    <End Role="GoiDichVu" Type="Self.GoiDichVu" Multiplicity="1" />
+    <End Role="LichChup" Type="Self.LichChup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoiDichVu">
+        <PropertyRef Name="ID_Goi" />
+      </Principal>
+      <Dependent Role="LichChup">
+        <PropertyRef Name="ID_Goi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__ID_LichC__5165187F">
+    <End Role="LichChup" Type="Self.LichChup" Multiplicity="1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LichChup">
+        <PropertyRef Name="ID_LichChup" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="ID_LichChup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichChup__ID_Kha__4AB81AF0">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
+    <End Role="LichChup" Type="Self.LichChup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="ID_NguoiDung" />
+      </Principal>
+      <Dependent Role="LichChup">
+        <PropertyRef Name="ID_KhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichChup__ID_Ngu__4BAC3F29">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
+    <End Role="LichChup" Type="Self.LichChup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="ID_NguoiDung" />
+      </Principal>
+      <Dependent Role="LichChup">
+        <PropertyRef Name="ID_NguoiChup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NguoiDung__ID_Qu__398D8EEE">
+    <End Role="Quyen" Type="Self.Quyen" Multiplicity="1" />
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quyen">
+        <PropertyRef Name="ID_Quyen" />
+      </Principal>
+      <Dependent Role="NguoiDung">
+        <PropertyRef Name="ID_Quyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebstudioEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Albums" EntityType="Self.Album" />
+    <EntitySet Name="Anhs" EntityType="Self.Anh" />
+    <EntitySet Name="ChiTietGois" EntityType="Self.ChiTietGoi" />
+    <EntitySet Name="ChuDes" EntityType="Self.ChuDe" />
+    <EntitySet Name="DichVus" EntityType="Self.DichVu" />
+    <EntitySet Name="GoiDichVus" EntityType="Self.GoiDichVu" />
+    <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
+    <EntitySet Name="LichChups" EntityType="Self.LichChup" />
+    <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
+    <EntitySet Name="Quyens" EntityType="Self.Quyen" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__Album__ID_ChuDe__3E52440B" Association="Self.FK__Album__ID_ChuDe__3E52440B">
+      <End Role="ChuDe" EntitySet="ChuDes" />
+      <End Role="Album" EntitySet="Albums" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Album__ID_NguoiC__3F466844" Association="Self.FK__Album__ID_NguoiC__3F466844">
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+      <End Role="Album" EntitySet="Albums" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Anh__ID_Album__4222D4EF" Association="Self.FK__Anh__ID_Album__4222D4EF">
+      <End Role="Album" EntitySet="Albums" />
+      <End Role="Anh" EntitySet="Anhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietGo__ID_Di__74AE54BC" Association="Self.FK__ChiTietGo__ID_Di__74AE54BC">
+      <End Role="DichVu" EntitySet="DichVus" />
+      <End Role="ChiTietGoi" EntitySet="ChiTietGois" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietGo__ID_Go__73BA3083" Association="Self.FK__ChiTietGo__ID_Go__73BA3083">
+      <End Role="GoiDichVu" EntitySet="GoiDichVus" />
+      <End Role="ChiTietGoi" EntitySet="ChiTietGois" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichChup__ID_Chu__4CA06362" Association="Self.FK__LichChup__ID_Chu__4CA06362">
+      <End Role="ChuDe" EntitySet="ChuDes" />
+      <End Role="LichChup" EntitySet="LichChups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichChup__ID_Goi__76969D2E" Association="Self.FK__LichChup__ID_Goi__76969D2E">
+      <End Role="GoiDichVu" EntitySet="GoiDichVus" />
+      <End Role="LichChup" EntitySet="LichChups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__ID_LichC__5165187F" Association="Self.FK__HoaDon__ID_LichC__5165187F">
+      <End Role="LichChup" EntitySet="LichChups" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichChup__ID_Kha__4AB81AF0" Association="Self.FK__LichChup__ID_Kha__4AB81AF0">
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+      <End Role="LichChup" EntitySet="LichChups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichChup__ID_Ngu__4BAC3F29" Association="Self.FK__LichChup__ID_Ngu__4BAC3F29">
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+      <End Role="LichChup" EntitySet="LichChups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NguoiDung__ID_Qu__398D8EEE" Association="Self.FK__NguoiDung__ID_Qu__398D8EEE">
+      <End Role="Quyen" EntitySet="Quyens" />
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

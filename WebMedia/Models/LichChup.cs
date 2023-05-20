@@ -26,11 +26,10 @@ namespace WebMedia.Models
         public Nullable<System.DateTime> NgayDat { get; set; }
         public Nullable<System.DateTime> NgayChup { get; set; }
         public int ID_ChuDe { get; set; }
-        public int ID_ChatBox { get; set; }
         public Nullable<bool> TrangThaiChup { get; set; }
         public int ID_Goi { get; set; }
+        public string Dia_Diem { get; set; }
     
-        public virtual ChatBox ChatBox { get; set; }
         public virtual ChuDe ChuDe { get; set; }
         public virtual GoiDichVu GoiDichVu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

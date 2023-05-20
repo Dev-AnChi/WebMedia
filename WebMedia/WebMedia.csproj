@@ -133,59 +133,53 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Album.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>StudioModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Anh.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChatBox.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>StudioModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietGoi.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>StudioModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChuDe.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>StudioModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DichVu.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>StudioModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GoiDichVu.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>StudioModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HoaDon.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>StudioModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LichChup.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>StudioModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MultiDataModels.cs" />
     <Compile Include="Models\NguoiDung.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NoiDungChat.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>StudioModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Quyen.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>StudioModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudioModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudioModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudioModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudioModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudioModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudioModels.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>StudioModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -194,28 +188,30 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\StudioModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>StudioModels.edmx</DependentUpon>
+      <LastGenOutput>StudioModels.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\StudioModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>StudioModels.edmx</DependentUpon>
+      <LastGenOutput>StudioModels.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\StudioModels.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>StudioModels.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\StudioModels.edmx.diagram">
+      <DependentUpon>StudioModels.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -242,6 +238,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\DangKy.cshtml" />
+    <Content Include="Views\Home\DatLich.cshtml" />
+    <Content Include="Views\Home\HoSo.cshtml" />
+    <Content Include="Views\Home\MyAlbum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

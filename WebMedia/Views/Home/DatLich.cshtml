@@ -1,0 +1,94 @@
+﻿@using WebMedia.Models
+@model LichChup
+@{
+    ViewBag.Title = "DatLich";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch vụ</title>
+    <link rel="stylesheet" href="~/Content/dichvu.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2">
+
+            </div>
+            <div class="col-lg-6 col-md-8 login-box">
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-4 logo">
+                        <img src="~/Images/Photographer/son.png" alt="Our Clients" class="">
+                    </div>
+                    @using (Html.BeginForm("DatLichPost", "Home", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="col-lg-8 login-form">
+                            <form>
+                                <div class="form-group">
+                                    <label class="form-control-label">Người chụp</label>
+                                    <input type="text" class="form-control" id="HoTenInput" value="@ViewBag.nguoichup" readonly style="background-color: #1A2226; color:white;">
+                                    @Html.TextBoxFor(model => model.ID_NguoiChup, new { @class = "form-control", style = "display:none;", id = "ID_NguoiChup" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Gói</label>
+                                    <input type="text" class="form-control" id="GoiInput" value="@ViewBag.TenGoi" readonly style="background-color: #1A2226; color:white;">
+                                    @Html.TextBoxFor(model => model.ID_Goi, new { @class = "form-control", style = "display:none;", id = "ID_Goi" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Khách Hàng</label>
+                                    <input type="text" class="form-control" id="KhachHangInput" value="@ViewBag.HoTen" readonly style="background-color: #1A2226; color:white;">
+                                    @Html.TextBoxFor(model => model.ID_KhachHang, new { @class = "form-control", style = "display:none;", id = "ID_KhachHang" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Đặt lịch chụp</label>
+                                    <div class="lich">
+                                        <input type="date" name="NgayChup" class="form-lich" style="width: 100%;">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Địa điểm</label>
+                                    @Html.TextBoxFor(m => m.Dia_Diem, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Dia_Diem, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Concept</label>
+                                    <div class="list">
+                                        @Html.DropDownList("ID_ChuDe", null, htmlAttributes: new { @class = "form-control", style = "background-color: #1A2226; color:white; border : none; border-bottom : solid 2px #0DB8DE" });
+                                        @Html.ValidationMessageFor(model => model.ID_ChuDe, "", new { @class = "text-danger" })
+                                        @*
+                <select class="form-select form-lich" aria-label="Default select example" style="width: 100%;height: 35px;">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                                        *@
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 loginbttm">
+                                    <div class="col-lg-5 login-text">
+                                        <a href="javascript:history.back()">Trở lại</a>
+                                    </div>
+                                    <div class="col-lg-7 login-btm login-button">
+                                        <button type="submit" class="btn btn-outline-primary">Xác nhận</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    }
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

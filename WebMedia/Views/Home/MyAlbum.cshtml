@@ -1,0 +1,53 @@
+﻿@using WebMedia.Models
+@model MultiDataModels
+@{
+    ViewBag.Title = "MyAlbum";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<script src="https://kit.fontawesome.com/a585b45142.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="~/Content/album.css">
+<link rel="stylesheet" href="~/Content/font-awesome.min.css">
+<link rel="stylesheet" href="~/Content/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/main.css">
+<script src="~/Scripts/modernizr-2.6.2.min.js"></script>
+
+@foreach (var item in Model.myAlbum)
+{
+    <section id="myalbum">
+        <div class="container">
+            <div class="row wrapper">
+                <div class="sec-title text-center wow animated fadeInDown dau">
+                    <h2>@item.TenAlbum</h2>
+                </div>
+                <input id="btnBox" type="checkbox">
+                <ul class="project-wrapper wow animated fadeInUp ">
+                    @foreach (var anh in Model.anhs)
+                    {
+                        if (item.ID_Album == anh.ID_Album)
+                        {
+                            var urlImg = "  /Images/DuAn/" + anh.TenAnh;
+
+                            <li class="portfolio-item img-holder">
+                                <img src=@urlImg class="img-responsive" alt="">
+                            </li>
+                        }
+                    }
+                </ul>
+                <label for="btnBox" class="btn-area">
+                    <span class="btn1">Xem thêm</span>
+                    <span class="btn2">Thu gọn</span>
+                </label>
+            </div>
+        </div>
+    </section>
+}
+
+<script src="~/Scripts/app.js"></script>
+<script src="~/Scripts/jquery-1.11.1.min.js"></script>
+<script src="~/Scripts/jquery.singlePageNav.min.js"></script>
+<script src="~/Scripts/jquery.easing.min.js"></script>
+<script src="~/Scripts/jquery.slitslider.js"></script>
+<script src="~/Scripts/main.js"></script>
+

@@ -1,0 +1,549 @@
+﻿@using WebMedia.Models
+@model MultiDataModels
+
+@{
+    ViewBag.Title = "HomePage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<!-- bootstrap.min -->
+<link rel="stylesheet" href="~/Content/font-awesome.min.css">
+<link rel="stylesheet" href="~/Content/jquery.fancybox.css">
+<link rel="stylesheet" href="~/Content/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/owl.carousel.css">
+<link rel="stylesheet" href="~/Content/slit-slider.css">
+<link rel="stylesheet" href="~/Content/animate.css">
+<link rel="stylesheet" href="~/Content/main.css">
+<script src="~/Scripts/modernizr-2.6.2.min.js"></script>
+
+<main class="site-content" role="main">
+
+    <!--
+    Home Slider
+    ==================================== -->
+
+    <section id="home-slider">
+        <div id="slider" class="sl-slider-wrapper">
+
+            <div class="sl-slider">
+
+                <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+
+                    <div class="bg-img bg-img-1">
+                        <img src="~/Images/HinhTruong/IMG_1923.JPG" alt="" style="width: 100%;">
+                    </div>
+
+                    <!-- <div class="slide-caption">
+                        <div class="caption-content">
+                            <h2 class="animated fadeInDown">chụp Kỷ yếu</h2>
+                            <span class="animated fadeInDown" style="font-weight: bold;">Nơi lưu giữ những kỷ niệm</span>
+                            <a href="#" class="btn btn-blue btn-effect">tham gia với chúng tôi</a>
+                        </div>
+                    </div> -->
+
+                </div>
+
+                <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
+
+                    <div class="bg-img bg-img-2">
+                        <img src="~/Images/HinhTruong/_MG_8268.jpeg" alt="" style="width: 100%;">
+                    </div>
+                    <!-- <div class="slide-caption">
+                        <div class="caption-content">
+                            <h2 class="animated fadeInDown">Chụp sự kiện</h2>
+                            <span class="animated fadeInDown" style="font-weight: bold;">nơi lưu giữ những khoảng khắc</span>
+                            <a href="#" class="btn btn-blue btn-effect">tham gia với chúng tôi</a>
+                        </div>
+                    </div> -->
+
+                </div>
+
+                <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+
+                    <div class="bg-img bg-img-3">
+                        <img src="~/Images/HinhTruong/concecpt.jpg" alt="" style="width: 100%;">
+                    </div>
+                    <!-- <div class="slide-caption">
+                        <div class="caption-content">
+                            <h2 class="animated fadeInDown">Chụp Concept</h2>
+                            <span class="animated fadeInDown" style="font-weight: bold;">Nơi lựa chọn những kiểu chụp</span>
+                            <a href="#" class="btn btn-blue btn-effect">tham gia với chúng tôi</a>
+                        </div>
+                    </div> -->
+
+                </div>
+
+            </div><!-- /sl-slider -->
+
+
+
+            <nav id="nav-arrows" class="nav-arrows hidden-xs hidden-sm visible-md visible-lg">
+                <a href="javascript:;" class="sl-prev">
+                    <i class="fa fa-angle-left fa-3x"></i>
+                </a>
+                <a href="javascript:;" class="sl-next">
+                    <i class="fa fa-angle-right fa-3x"></i>
+                </a>
+            </nav>
+
+
+            <nav id="nav-dots" class="nav-dots visible-xs visible-sm hidden-md hidden-lg">
+                <span class="nav-dot-current"></span>
+                <span></span>
+                <span></span>
+            </nav>
+
+        </div><!-- /slider-wrapper -->
+    </section>
+
+    <!--
+    End Home SliderEnd
+    ==================================== -->
+    <!-- about section -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 wow animated fadeInLeft">
+                    <div class="recent-works welcome-block">
+                        <h3>LƯỢN MEMBER</h3>
+                        <div id="works">
+                            @foreach (var item in Model.nguoidungs)
+                            {
+                                var imgUrl = "/Images/Photographer/" + item.AnhDaiDien;
+                                <div class="work-item">
+                                    <div class="message-body">
+                                        <img src=@imgUrl class="pull-left" alt="member" style="width: 100%;">
+                                        <p>@item.HoTen - Photographer</p>
+                                    </div>
+                                </div>
+                            }
+                            @*
+                                <div class="work-item">
+                                    <div class="message-body">
+                                        <img src="~/Images/Photographer/Hung.png" class="pull-left" alt="member" style="width: 100%;">
+                                        <p>Nguyễn Phi Hùng - Photographer</p>
+                                    </div>
+                                </div>
+                                <div class="work-item">
+                                    <div class="message-body">
+                                        <img src="~/Images/Photographer/Kien.png" class="pull-left" alt="member" style="width: 100%;">
+                                        <p>Anh Kiên - Model</p>
+                                    </div>
+                                </div>
+                            *@
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-offset-1 wow animated fadeInRight">
+                    <div class="welcome-block">
+                        <h3>Những kẻ lưu giữ thanh xuân</h3>
+                        <div class="message-body">
+                            <p>Mong muốn đem đến cho cho các bạn những kỷ niệm đẹp nhất, cũng như là lưu giữ cho mọi người những khoảnh khắc tuyệt vời nhất của thời học sinh Lượn luôn cố gắng hoàn thiện và chỉnh chu từng ngày.</p>
+                            <br>
+                            <p>
+                                Và xin trân trọng giới thiệu với các bạn đội hình chính trong mùa KỶ YẾU 2023 này. Toàn bộ thành viên năm nay của LƯỢN: Với đội ngũ trẻ tràn đầy năng lượng, nhiệt huyết, đã tham gia nhiều sự kiện & Concept, sẵn sàng "chiều lòng" các bạn học sinh dù yếu cầu có KHÓ đến cỡ mấy.
+                                Với sức trẻ nhiệt huyết năng động, hứa hẹn mang lại phong cách chụp sáng tạo và mới lạ cho các bạn - nhưng cũng yên tâm vì LƯỢN không thiếu đi sự chuyên nghiệp và chỉnh chu.
+                                Với đội ngũ đã có nhiều kinh nghiệm, Lượn hứa hẹn có thể phục vụ gần như các yêu cầu của các bạn.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end about section -->
+    <!-- Service section -->
+    <section id="service">
+        <div class="container">
+            <div class="row">
+                <div class="sec-title text-center">
+                    <h2 class="wow animated bounceInLeft">chủ đề</h2>
+                    <p class="wow animated bounceInRight">Các hình thức job của Lượn</p>
+                </div>
+                @foreach (var item in Model.chudes)
+                {
+                    var imgUrl = "/Images/ChuDe/" + item.AnhMH;
+                    <div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.3s">
+                        <div class="img-holder">
+                            <a href="#">
+                                <img src=@imgUrl class="img-circle" alt="Cinque Terre" style="width: 100%;" />
+                            </a>
+                        </div>
+                        <h3>@item.TenChuDe</h3>
+                        <p>@item.NoiDung</p>
+                    </div>
+                    /*
+                    <div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.6s">
+                        <div class="img-holder">
+                            <a href="#">
+                                <img src="~/Images/ChuDe/_MG_1550.JPG" class="img-circle" alt="Cinque Terre" style="width: 100%;" />
+                            </a>
+                        </div>
+                        <h3>Sự kiện</h3>
+                        <p>Với Đội Ngũ chất lượng nhất , Lượn Media cam kết mang đến cho khách hàng những trãi nghiệm hài lòng</p>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.9s">
+                        <div class="img-holder">
+                            <a href="#">
+                                <img src="~/Images/ChuDe/doi.JPG" class="img-circle" alt="Cinque Terre" style="width: 100%;" />
+                            </a>
+                        </div>
+                        <h3>Concept</h3>
+                        <p>Các cặp đôi có những tấm ảnh đẹp là niềm tự hào của Lượn</p>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn">
+                        <div class="img-holder">
+                            <a href="#">
+                                <img src="~/Images/ChuDe/don.jpg" class="img-circle" alt="Cinque Terre" style="width: 100%;" />
+                            </a>
+                        </div>
+                        <h3>Cá nhân</h3>
+                        <p>Lượn tự hào khi mang đến cho mỗi bạn những tấm hình đẹp</p>
+                    </div>*/
+                }
+            </div>
+        </div>
+    </section>
+    <!-- end Service section -->
+    <!-- portfolio section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+
+                <div class="sec-title text-center wow animated fadeInDown">
+                    <h2>Dự án tiêu biểu</h2>
+                    <p>LƯỢN MEDIA _Chuyên Concept & kỷ yếu | Phan Rang - Nha Trang - Sài Gòn</p>
+                </div>
+
+
+                <ul class="project-wrapper wow animated fadeInUp">
+                    @foreach (var item in Model.albums)
+                    {
+                        var imgUrl = "/Images/DuAn/" + @item.AnhBia;
+                        <li class="portfolio-item">
+                            <img src=@imgUrl class="img-responsive" alt="Còn nhớ cái ngày mới vào Trường cảm giác hồi hộp, tò mò để lại trong tâm trí của tôi.">
+                            <figcaption class="mask">
+                                <h3>@item.TenAlbum</h3>
+                                <p>@item.NoiDung</p>
+                            </figcaption>
+                            <ul class="external">
+                                <li><a class="fancybox" title=@item.TenAlbum data-fancybox-group="works" href="#"><i class="fa fa-search"></i></a></li>
+                                <li><a href=""><i class="fa fa-link"></i></a></li>
+                            </ul>
+                        </li>
+                    }
+
+                    @*
+                        <li class="portfolio-item">
+                            <img src="~/Images/DuAn/IMG_1922.JPG" class="img-responsive" alt="Mới đó, mà giờ đây đã phải đến lúc xa ngôi trường này. Tôi sẽ nhớ " Ngôi Nhà thứ 2" này nhiều lắm. ">
+                            <figcaption class="mask">
+                                <h3>Kỷ yếu nhóm</h3>
+                                <p>Tuổi trẻ mà ...... hãy tỏa sáng rực rỡ. Tôi và bạn chỉ có thể cháy cùng nhau một lần. Và chúng ta sẽ mãi mãi không bao giờ quên.</p>
+                            </figcaption>
+                            <ul class="external">
+                                <li><a class="fancybox" title="Kỷ yếu nhóm nữ" href="#" data-fancybox-group="works"><i class="fa fa-search"></i></a></li>
+                                <li><a href=""><i class="fa fa-link"></i></a></li>
+                            </ul>
+                        </li>
+
+                        <li class="portfolio-item">
+                            <img src="~/Images/ChuDe/doi.JPG" class="img-responsive" alt="Bạn đã kịp lưu giữ lại điều tốt đẹp ấy chưa? Tình yêu năm 17 tuổi, đẹp đẽ và đáng yêu biết bao nhiêu.">
+                            <figcaption class="mask">
+                                <h3>Kỷ yếu cặp đôi</h3>
+                                <p>Bạn đã kịp lưu giữ lại điều tốt đẹp ấy chưa? Tình yêu năm 17 tuổi, đẹp đẽ và đáng yêu biết bao nhiêu.</p>
+                            </figcaption>
+                            <ul class="external">
+                                <li><a class="fancybox" title="Kỷ yếu cặp đôi" data-fancybox-group="works" href="#"><i class="fa fa-search"></i></a></li>
+                                <li><a href=""><i class="fa fa-link"></i></a></li>
+                            </ul>
+                        </li>
+
+                        <li class="portfolio-item">
+                            <img src="~/Images/DuAn/Trai1.jpg" class="img-responsive" alt="Dư âm Hội Trại 26.03.2023 - ❤️ THPT Nguyễn Huệ ❤️ Nguyễn Huệ ơiii ....... !!!">
+                            <figcaption class="mask">
+                                <h3>Hội Trại 26.03.2023</h3>
+                                <p>
+                                    Dư âm Hội Trại 26.03.2023 - <br />❤️ THPT Nguyễn Huệ ❤️<br />
+                                    Nguyễn Huệ ơiii ....... !!!
+
+                                </p>
+                            </figcaption>
+                            <ul class="external">
+                                <li><a class="fancybox" title="Hội Trại 26.03.2023" data-fancybox-group="works" href="#"><i class="fa fa-search"></i></a></li>
+                                <li><a href=""><i class="fa fa-link"></i></a></li>
+                            </ul>
+                        </li>
+
+                        <li class="portfolio-item">
+                            <img src="~/Images/DuAn/HoiCho1.jpg" class="img-responsive" alt="Tan chảy với sự đáng yêu này của THPT Nguyễn Trãi - kỷ niệm 2023 đáng để nhớ về 🥰🥰🥰. ">
+                            <figcaption class="mask">
+                                <h3>Hội Chợ Truyền Thống</h3>
+                                <p>Tan chảy với sự đáng yêu này của THPT Nguyễn Trãi - kỷ niệm 2023 đáng để nhớ về 🥰🥰🥰. </p>
+                            </figcaption>
+                            <ul class="external">
+                                <li><a class="fancybox" title="Hội Chợ Truyền Thống" data-fancybox-group="works" href="#"><i class="fa fa-search"></i></a></li>
+                                <li><a href=""><i class="fa fa-link"></i></a></li>
+                            </ul>
+                        </li>
+
+                        <li class="portfolio-item">
+                            <img src="~/Images/DuAn/SuKien1.jpg" class="img-responsive" alt="Những hành động ấy, cho anh em Lượn Stories thấy tình cảm Thầy Trò tại đây gần gũi đến như thế nào. Thật là một không khí quá ấm áp đến từ nơi đây 😍😍😍. ">
+                            <figcaption class="mask">
+                                <h3>Chào mừng ngày 26-3</h3>
+                                <p>Một chút đáng yêu bất ngờ đến từ các quý thầy cô. Sự xuất hiện bất ngờ của các thầy cô trên sàn CATWALK.  </p>
+                            </figcaption>
+                            <ul class="external">
+                                <li><a class="fancybox" title="Chào mừng ngày 26-3" data-fancybox-group="works" href="#"><i class="fa fa-search"></i></a></li>
+                                <li><a href=""><i class="fa fa-link"></i></a></li>
+                            </ul>
+                        </li>
+                    *@
+                </ul>
+
+            </div>
+        </div>
+    </section>
+    <!-- end portfolio section -->
+    <!-- Testimonial section -->
+    <section id="testimonials" class="parallax">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+
+                    <div class="sec-title text-center white wow animated fadeInDown">
+                        <h2>Mọi người nói gì về chúng tôi</h2>
+                    </div>
+
+                    <div id="testimonial" class=" wow animated fadeInUp">
+                        <div class="testimonial-item text-center">
+                            <img src="~/Images/BinhLuan/nguoi1.jpg" alt="Our Clients">
+                            <div class="clearfix">
+                                <span>Nguyễn Phi Hùng</span>
+                                <p>
+                                    Trời ơi, không biết nói gì luôn ý 🙄🙄
+                                    Toàn là trai tài, gái sắc .....
+                                    Xinh đẹp, dễ thương lại còn đa tài nữa chứ. Xứng đáng có được người yêu như tớ 🤭
+                                </p>
+                            </div>
+                        </div>
+                        <div class="testimonial-item text-center">
+                            <img src="~/Images/BinhLuan/nguoi2.jpg" alt="Our Clients">
+                            <div class="clearfix">
+                                <span>lê Hiền</span>
+                                <p>Những hành động ấy, cho anh em Lượn Stories thấy tình cảm Thầy Trò tại đây gần gũi đến như thế nào. Thật là một không khí quá ấm áp đến từ nơi đây.</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-item text-center">
+                            <img src="~/Images/BinhLuan/nguoi3.jpg" alt="Our Clients">
+                            <div class="clearfix">
+                                <span>Phương Uyên</span>
+                                <p>
+                                    Cảm ơn vì sự yêu mến của Thầy Cô và các bạn dành cho Team Lượn,
+                                    Đặc biệt là Đoàn Thanh Niên Trường Nguyễn Trãi và ban Truyền thông.
+                                    Cảm ơn những lời động viên đầy ý nghĩa mà các bạn đã gửi đến Lượn.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end Testimonial section -->
+    <!-- Price section -->
+    <section id="price">
+        <div class="container">
+            <div class="row">
+                <div class="sec-title text-center wow animated fadeInDown">
+                    <h2>Gói dịch vụ</h2>
+                    <p>Giá cho các dịch vụ chụp ảnh</p>
+                </div>
+                @foreach (var item in Model.goidichvus)
+                {
+                    var giaVND = String.Format("{0:N0}", item.Gia);
+
+                    <div class="col-md-4 wow animated fadeInUp">
+                        <div class="price-table text-center">
+                            <span>@item.TenGoi</span>
+                            <div class="value">
+                                <span>@giaVND</span>
+                                <span>vnd</span><br>
+                                <span>@item.SoLuongAnh tấm</span>
+                            </div>
+                            <ul>
+                                @foreach (var x in Model.ctgois)
+                                {
+                                    if (item.ID_Goi == x.ID_Goi)
+                                    {
+                                        <li>@x.DichVu.TenDichVu</li>
+                                    }
+                                }
+                                @*
+                                    <li>Không Được Thêm</li>
+                                    <li>Không Được Thêm</li>
+                                    <li>Không Được Thêm</li>*@
+                                @if (Model.isLogin)
+                                {
+                                    <li><a href="@Url.Action("DatLich", "Home", new { ID_Goi = item.ID_Goi })">Mua</a></li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        @Html.ActionLink("Đăng nhập", "Login")
+                                        @*<a href="~/Views/Home/Login.cshtml">Đăng nhập</a>*@
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+
+                @*
+                    <div class="col-md-4 wow animated fadeInUp" data-wow-delay="0.4s">
+                        <div class="price-table featured text-center">
+                            <span>Bạc</span>
+                            <div class="value">
+                                <span>500 000</span>
+                                <span>vnd</span><br>
+                                <span>1 000 tấm</span>
+                            </div>
+                            <ul>
+                                <li>Gợi ý concept</li>
+                                <li>Phục vụ tốt</li>
+                                <li>Không Được Thêm</li>
+                                <li><a href="#">Đăng nhập</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 wow animated fadeInUp" data-wow-delay="0.8s">
+                        <div class="price-table text-center">
+                            <span>Vàng</span>
+                            <div class="value">
+                                <span>800 000</span>
+                                <span>vnd</span><br>
+                                <span>1 500 tấm</span>
+                            </div>
+                            <ul>
+                                <li>Gợi ý concept</li>
+                                <li>Phục vụ tốt</li>
+                                <li>Makup</li>
+                                <li><a href="#">Đăng nhập</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                *@
+            </div>
+        </div>
+    </section>
+    <!-- end Price section -->
+    <!-- Social section -->
+    @*
+        <section id="social" class="parallax">
+            <div class="overlay">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="sec-title text-center white wow animated fadeInDown">
+                            <h2>FOLLOW Chúng tôi</h2>
+                            <p>Hãy theo dõi chúng tôi để biết thêm nhiều khuyến mãi</p>
+                        </div>
+
+                        <ul class="social-button">
+                            <li class="wow animated zoomIn"><a href="#"><i class="fa fa-thumbs-up fa-2x"></i></a></li>
+                            <li class="wow animated zoomIn" data-wow-delay="0.3s"><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
+                            <li class="wow animated zoomIn" data-wow-delay="0.6s"><a href="#"><i class="fa fa-instagram fa-2x"></i></a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </section>*@
+    <!-- end Social section -->
+    <!-- Contact section -->
+    <section id="contact" style="background-color : papayawhip">
+        <div class="container">
+            <div class="row">
+                @*
+                    <div class="sec-title text-center wow animated fadeInDown">
+                        <h2>Liên hệ</h2>
+                        <p>Thông tin liên hệ</p>
+                    </div>
+                *@
+
+                <!-- <div class="col-md-7 contact-form wow animated fadeInLeft">
+                    <form action="#" method="post">
+                        <div class="input-field">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name...">
+                        </div>
+                        <div class="input-field">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email...">
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="subject" class="form-control" placeholder="Subject...">
+                        </div>
+                        <div class="input-field">
+                            <textarea name="message" class="form-control" placeholder="Messages..."></textarea>
+                        </div>
+                        <button type="submit" id="submit" class="btn btn-blue btn-effect">Send</button>
+                    </form>
+                </div> -->
+                <!-- <div class="col-md-5 wow animated fadeInRight"></div> -->
+                <div class="wow animated fadeInRight text-center">
+                    <address class="contact-details">
+                        <h3>Liên hệ chúng tôi</h3>
+                        <p><i class="fa fa-pencil"></i>LƯỢN STORIES<span>Chuyên Concept & kỷ yếu</span> <span>Phan Rang -  Nha Trang - Sài Gòn </span><span>Việt Nam</span></p><br>
+                        <p><i class="fa fa-phone"></i>Phone: 𝟎𝟑𝟗𝟗𝟔𝟒𝟑𝟔𝟕𝟑𝟎 </p>
+                        <p><i class="fa fa-envelope"></i>son.psh.61cntt@ntu.edu.vn</p>
+                    </address>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- end Contact section -->
+    <!-- <section id="google-map">
+        <div id="map-canvas" class="wow animated fadeInUp"></div>
+    </section> -->
+
+</main>
+
+@*
+    @Scripts.Render("~/Scripts/jquery-1.11.1.min.js")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/jquery.singlePageNav.min.js")
+    @Scripts.Render("~/Scripts/jquery.fancybox.pack.js")
+    @Scripts.Render("~/Scripts/~/Scripts/owl.carousel.min.js")
+    @Scripts.Render("~/Scripts/jquery.easing.min.js")
+    @Scripts.Render("~/Scripts/jquery.slitslider.js")
+    @Scripts.Render("~/Scripts/jquery.ba-cond.min.js")
+    @Scripts.Render("~/Scripts/wow.min.js")
+    @Scripts.Render("~/Scripts/main.js")
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+*@
+
+
+<!-- Main jQuery -->
+<script type="text/javascript" src="~/Scripts/jquery-1.11.1.min.js"></script>
+<!-- Twitter Bootstrap -->
+<script src="~/Scripts/bootstrap.min.js"></script>
+<!-- Single Page Nav -->
+<script src="~/Scripts/jquery.singlePageNav.min.js"></script>
+<!-- jquery.fancybox.pack -->
+<script src="~/Scripts/jquery.fancybox.pack.js"></script>
+<!-- Google Map API -->
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<!-- Owl Carousel -->
+<script src="~/Scripts/owl.carousel.min.js"></script>
+<!-- jquery easing -->
+<script src="~/Scripts/jquery.easing.min.js"></script>
+<!-- Fullscreen slider -->
+<script src="~/Scripts/jquery.slitslider.js"></script>
+<script src="~/Scripts/jquery.ba-cond.min.js"></script>
+<!-- onscroll animation -->
+<script src="~/Scripts/wow.min.js"></script>
+<!-- Custom Functions -->
+<script src="~/Scripts/main.js"></script>

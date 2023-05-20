@@ -1,0 +1,237 @@
+.dau{
+    padding-top: 30px;
+}
+.wrapper {
+	width: auto;
+	height: auto;
+	margin: 20px auto;
+}
+.wrapper ul {
+	list-style: none;
+	padding: 0;
+}
+.wrapper ul:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+.wrapper ul li {
+	width: calc(30% - 5px);
+	margin: 30px 15px 0;
+	height: 200px;
+	background-size: cover;
+	background-position: center center;
+	float: left;
+	box-shadow: 0 15px 10px 1px rgba(0, 0, 0, 0.5);
+}
+.wrapper ul li:nth-child(1n + 4) {
+	max-height: 0;
+	opacity: 0;
+	transition: 0.2s ease-in;
+}
+.wrapper .btn-area{
+    display: block;
+	background: #1A2226;
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
+	font-weight: 900;
+	width: 180px;
+	line-height: 50px;
+	margin: 50px auto 0;
+	border-radius: 50px;
+}
+.wrapper .btn-area .btn2 {
+	display: none;
+}
+.wrapper #btnBox {
+	display: none;
+}
+.wrapper #btnBox:checked~ul li:nth-child(1n + 4) {
+	max-height: 1000px;
+	opacity: 2;
+	transition: 0.2s ease-in;
+}
+.wrapper #btnBox:checked~.btn-area .btn2 {
+	display: block;
+}
+.wrapper #btnBox:checked~.btn-area .btn1 {
+	display: none;
+}
+
+/* ============================================================================= */
+.wrapper1 {
+	width: auto;
+	height: auto;
+	margin: 20px auto;
+}
+.wrapper1 ul {
+	list-style: none;
+	padding: 0;
+}
+.wrapper1 ul:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+.wrapper1 ul li {
+	width: calc(30% - 5px);
+	margin: 30px 15px 0;
+	height: 200px;
+	background-size: cover;
+	background-position: center center;
+	float: left;
+	box-shadow: 0 15px 10px 1px rgba(0, 0, 0, 0.5);
+}
+.wrapper1 ul li:nth-child(1n + 4) {
+	max-height: 0;
+	opacity: 0;
+	transition: 0.2s ease-in;
+}
+.wrapper1 .btn-area1{
+    display: block;
+	background: #1A2226;
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
+	font-weight: 900;
+	width: 180px;
+	line-height: 50px;
+	margin: 50px auto 0;
+	border-radius: 50px;
+}
+.wrapper1 .btn-area1 .btn2 {
+	display: none;
+}
+.wrapper1 #btnBox1 {
+	display: none;
+}
+.wrapper1 #btnBox1:checked~ul li:nth-child(1n + 4) {
+	max-height: 1000px;
+	opacity: 2;
+	transition: 0.2s ease-in;
+}
+.wrapper1 #btnBox1:checked~.btn-area1 .btn2 {
+	display: block;
+}
+.wrapper1 #btnBox1:checked~.btn-area1 .btn1 {
+	display: none;
+}
+
+/* ================================================== */
+.wrapper2 {
+	width: auto;
+	height: auto;
+	margin: 20px auto;
+}
+.wrapper2 ul {
+	list-style: none;
+	padding: 0;
+}
+.wrapper2 ul:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+.wrapper2 ul li {
+	width: calc(30% - 5px);
+	margin: 30px 15px 0;
+	height: 200px;
+	background-size: cover;
+	background-position: center center;
+	float: left;
+	box-shadow: 0 15px 10px 1px rgba(0, 0, 0, 0.5);
+}
+.wrapper2 ul li:nth-child(1n + 4) {
+	max-height: 0;
+	opacity: 0;
+	transition: 0.2s ease-in;
+}
+.wrapper2 .btn-area2{
+    display: block;
+	background: #1A2226;
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
+	font-weight: 900;
+	width: 180px;
+	line-height: 50px;
+	margin: 50px auto 0;
+	border-radius: 50px;
+}
+.wrapper2 .btn-area2 .btn2 {
+	display: none;
+}
+.wrapper2 #btnBox2 {
+	display: none;
+}
+.wrapper2 #btnBox2:checked~ul li:nth-child(1n + 4) {
+	max-height: 1000px;
+	opacity: 2;
+	transition: 0.2s ease-in;
+}
+.wrapper2 #btnBox2:checked~.btn-area2 .btn2 {
+	display: block;
+}
+.wrapper2 #btnBox2:checked~.btn-area2 .btn1 {
+	display: none;
+}
+
+/* =========================================================== */
+.wrapper3 {
+	width: auto;
+	height: auto;
+	margin: 20px auto;
+}
+.wrapper3 ul {
+	list-style: none;
+	padding: 0;
+}
+.wrapper3 ul:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+.wrapper3 ul li {
+	width: calc(30% - 5px);
+	margin: 30px 15px 0;
+	height: 200px;
+	background-size: cover;
+	background-position: center center;
+	float: left;
+	box-shadow: 0 15px 10px 1px rgba(0, 0, 0, 0.5);
+}
+.wrapper3 ul li:nth-child(1n + 4) {
+	max-height: 0;
+	opacity: 0;
+	transition: 0.2s ease-in;
+}
+.wrapper3 .btn-area3{
+    display: block;
+	background: #1A2226;
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
+	font-weight: 900;
+	width: 180px;
+	line-height: 50px;
+	margin: 50px auto 0;
+	border-radius: 50px;
+}
+.wrapper3 .btn-area3 .btn2 {
+	display: none;
+}
+.wrapper3 #btnBox3 {
+	display: none;
+}
+.wrapper3 #btnBox3:checked~ul li:nth-child(1n + 4) {
+	max-height: 1000px;
+	opacity: 2;
+	transition: 0.2s ease-in;
+}
+.wrapper3 #btnBox3:checked~.btn-area3 .btn2 {
+	display: block;
+}
+.wrapper3 #btnBox3:checked~.btn-area3 .btn1 {
+	display: none;
+}

@@ -1,0 +1,102 @@
+﻿@using WebMedia.Models
+
+@model NguoiDung
+@{
+    ViewBag.Title = "HoSo";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ cá nhân</title>
+    <link rel="stylesheet" href="~/Content/hoso.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2">
+
+            </div>
+            <div class="col-lg-6 col-md-8 login-box">
+
+                <div class="col-lg-12 login-form">
+                    @using (Html.BeginForm("HoSo", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        var urlAvatar = "/Images/Photographer/" + Model.AnhDaiDien;
+                        @Html.AntiForgeryToken()
+                        <div class="col-lg-4 logo">
+                            <img src="@urlAvatar">
+                        </div>
+                        <div class="col-lg-8 login-form">
+                            <form>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.ID_NguoiDung, new { @value = Model.ID_NguoiDung, @class = "form-control", style = "display:none;", id = "ID_NguoiDung" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Họ tên</label>
+                                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Số điện thoại</label>
+                                    @Html.EditorFor(model => model.STD, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.STD, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Địa chỉ</label>
+                                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">Ảnh đại diện</label>
+                                    <input type="file" class="avt" name="Avatar" value="@Model.AnhDaiDien" accept="image/*" />
+                                    @Html.ValidationMessageFor(m => m.AnhDaiDien, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">Quyền người dùng</label>
+                                    <input type="text" class="form-control" value="@ViewBag.TenQuyen" readonly style="background-color: #1A2226;">
+                                    @Html.TextBoxFor(model => model.ID_Quyen, new { @value = Model.ID_Quyen, @class = "form-control", style = "display:none;", id = "ID_Quyen" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Tên đăng nhập</label>
+                                    <input type="text" name="TaiKhoan" class="form-control" value="@Model.TaiKhoan" readonly style="background-color: #1A2226;">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Mật khẩu mới</label>
+                                    <input type="password" name="MatKhauInput" class="form-control" id="MatKhauInput">
+                                    @Html.HiddenFor(model => model.MatKhau, new { id = "MatKhauHidden" })
+                                </div>
+                                <div class="col-lg-12 loginbttm">
+                                    <div class="col-lg-5 login-text">
+                                        <a href="javascript:history.back()">Trở lại</a>
+                                    </div>
+                                    <div class="col-lg-7 login-btm login-button">
+                                        <button type="submit" class="btn btn-outline-primary">Xác nhận sửa</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        if (TempData["EditSuccess"] != null)
+                        {
+                            <script>
+                                    alert("@TempData["EditSuccess"].ToString()");
+                            </script>
+                        }
+                    }
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

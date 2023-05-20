@@ -13,5 +13,7 @@ namespace WebMedia.Models
         public List<NguoiDung> nguoidungs { get; set; }
         public List<GoiDichVu> goidichvus { get; set; }
         public List<ChiTietGoi> ctgois { get; set; }
+        public List<Album> myAlbum { get; set; }
+        public List<Anh> anhs { get; set; }  
     }
 }

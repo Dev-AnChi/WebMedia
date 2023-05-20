@@ -20,7 +20,6 @@ namespace WebMedia.Models
             this.Albums = new HashSet<Album>();
             this.LichChups = new HashSet<LichChup>();
             this.LichChups1 = new HashSet<LichChup>();
-            this.NoiDungChats = new HashSet<NoiDungChat>();
         }
     
         public int ID_NguoiDung { get; set; }
@@ -39,7 +38,5 @@ namespace WebMedia.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LichChup> LichChups1 { get; set; }
         public virtual Quyen Quyen { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NoiDungChat> NoiDungChats { get; set; }
     }
 }
