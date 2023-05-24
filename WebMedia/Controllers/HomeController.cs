@@ -256,5 +256,30 @@ namespace WebMedia.Controllers
         {
             return db.Anhs.ToList();
         }
+
+        public ActionResult LichChup()
+        {
+            multidata.isLogin = Request.Cookies.Get("Account") == null ? false : true;
+            ViewBag.islogin = multidata.isLogin;
+
+            string myValue = "";
+            HttpCookie myCookie = Request.Cookies["Account"];
+            if (myCookie != null)
+            {
+                myValue = myCookie.Value;
+                // Xử lý giá trị của cookie
+            }
+
+            var nguoidung = db.NguoiDungs.SingleOrDefault(x => x.TaiKhoan.ToString() == myValue);
+
+           var lichchup = GetLichChups(nguoidung.ID_NguoiDung);
+
+            multidata.lichChups = lichchup;
+            return View(multidata);
+        }
+        public List<LichChup> GetLichChups(int id)
+        {
+            return db.LichChups.Where(x => x.ID_NguoiChup == id).ToList();
+        }
     }
 }

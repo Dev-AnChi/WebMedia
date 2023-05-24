@@ -214,6 +214,7 @@
       <DependentUpon>StudioModels.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.6.2.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -241,6 +242,7 @@
     <Content Include="Views\Home\DatLich.cshtml" />
     <Content Include="Views\Home\HoSo.cshtml" />
     <Content Include="Views\Home\MyAlbum.cshtml" />
+    <Content Include="Views\Home\LichChup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
